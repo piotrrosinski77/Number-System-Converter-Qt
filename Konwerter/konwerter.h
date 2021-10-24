@@ -16,15 +16,13 @@ public:
     ~Konwerter();
 
 private slots:
+    void on_pushButton_clicked();
+    void on_Quitbutton_clicked();
     void on_BINButton_clicked();
 
     void on_OCTButton_clicked();
 
     void on_HEXButton_clicked();
-
-    void on_buttonBox_accepted();
-
-    void on_buttonBox_rejected();
 
 private:
     Ui::Konwerter *ui;

@@ -9,16 +9,27 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bindialog.cpp \
+    hexdialog.cpp \
     main.cpp \
-    konwerter.cpp
+    konwerter.cpp \
+    octdialog.cpp
 
 HEADERS += \
-    konwerter.h
+    bindialog.h \
+    hexdialog.h \
+    konwerter.h \
+    octdialog.h
 
 FORMS += \
-    konwerter.ui
+    bindialog.ui \
+    hexdialog.ui \
+    konwerter.ui \
+    octdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES +=
