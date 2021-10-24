@@ -1,4 +1,4 @@
-#Konwerter systemów liczbowych
+# Projects
 Temat Projektu: Konwerter systemów liczbowych
 Program przelicza liczbę podaną w systemie dziesiętnym na systemy:
 - ósemkowy (OCT)
