@@ -1,5 +1,8 @@
+//pliki nagłówkowe
 #include "konwerter.h"
 #include "ui_konwerter.h"
+
+//zastosowane bibilioteki QT/C++
 #include<QMessageBox>
 #include<QFile>
 #include<QTextStream>
@@ -18,6 +21,8 @@ Konwerter::~Konwerter()
 {
     delete ui;
 }
+
+// Zastosowanie algorytmu Euklidesa do wyznaczania największego wspólnego dzielnika
 
 int NWD(long a, long b) {
     while(a!=b)
@@ -39,8 +44,8 @@ void Konwerter::on_BINButton_clicked()
     }
     bool ok;
     QTextStream out(&file);
-    QString str = ui->plainTextEdit->toPlainText();
-    long str2 = str.toLong(&ok, 10);
+    QString str = ui->plainTextEdit->toPlainText(); //pobierz dane z plainTextEdit
+    long str2 = str.toLong(&ok, 10); //zamiana na zmienną podwójnej prezycji
     QString strBIN = QString::number(str2, 2);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -59,13 +64,13 @@ void Konwerter::on_OCTButton_clicked()
 {
     QFile file("C:/Users/bluep/OneDrive/Pulpit/Konwerter/raport.txt");
 
-    if (!file.open(QFile::WriteOnly | QIODevice::Append)) {
+    if (!file.open(QFile::WriteOnly | QIODevice::Append)) { //utworzenie pliku lub dodanie danych do istniejącego już pliku bez wymazywania
         QMessageBox::warning(this, "Ostrzeżenie", "Plik nie został otworzony");
     }
     bool ok;
     QTextStream out(&file);
     QString str = ui->plainTextEdit->toPlainText();
-    long str2 = str.toLong(&ok, 10);
+    long str2 = str.toLong(&ok, 10); //If ok is not nullptr, failure is reported by setting *ok to false, and success by setting *ok to true.
     QString strOCT = QString::number(str2, 8);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -153,7 +158,7 @@ void Konwerter::on_NWWButton_clicked()
     long str3 = str.toLong(&ok, 10);
     long str4 = str2.toLong(&ok, 10);
     long NWDstr = NWD(str3,str4);
-    long NWWstr = str3*str4/NWDstr;
+    long NWWstr = str3*str4/NWDstr; //wykorzystanie zależności NWW=a*b/NWD
     out << "Najmniejsza wspólna wielokrotność: ";
     out << NWWstr;
     out << "\n\n";
