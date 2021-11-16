@@ -26,6 +26,8 @@ private slots:
 
     void on_NWWButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Konwerter *ui;
 };
