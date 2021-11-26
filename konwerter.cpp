@@ -1,5 +1,8 @@
+//pliki nagłówkowe
 #include "konwerter.h"
 #include "ui_konwerter.h"
+
+//zastosowane bibilioteki QT/C++
 #include<QMessageBox>
 #include<QFile>
 #include<QTextStream>
@@ -25,6 +28,8 @@ Konwerter::~Konwerter()
     delete ui;
 }
 
+// Zastosowanie algorytmu Euklidesa do wyznaczania największego wspólnego dzielnika
+
 int NWD(long a, long b) {
     while(a!=b)
            if(a>b)
@@ -46,6 +51,7 @@ void Konwerter::on_BINButton_clicked()
 
     bool ok;
     QTextStream out(&file);
+<<<<<<< HEAD
     QString str = ui->lineEdit->text();
     long str2 = str.toLong(&ok, 10);
 
@@ -53,6 +59,10 @@ void Konwerter::on_BINButton_clicked()
          ui->label->setText(QString("0 < Twoja liczba < 2147483648."));
     }
     else {
+=======
+    QString str = ui->plainTextEdit->toPlainText(); //pobierz dane z plainTextEdit
+    long str2 = str.toLong(&ok, 10); //zamiana na zmienną podwójnej prezycji
+>>>>>>> f684fc536e73c70b650a609dbc5988e3134099b2
     QString strBIN = QString::number(str2, 2);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -73,12 +83,13 @@ void Konwerter::on_OCTButton_clicked()
     QFile file;
     file.setFileName("raport.txt");
 
-    if (!file.open(QFile::WriteOnly | QIODevice::Append)) {
+    if (!file.open(QFile::WriteOnly | QIODevice::Append)) { //utworzenie pliku lub dodanie danych do istniejącego już pliku bez wymazywania
         QMessageBox::warning(this, "Ostrzeżenie", "Plik nie został otworzony");
     }
 
     bool ok;
     QTextStream out(&file);
+<<<<<<< HEAD
     QString str = ui->lineEdit->text();
     long str2 = str.toLong(&ok, 10);
 
@@ -87,6 +98,10 @@ void Konwerter::on_OCTButton_clicked()
     }
     else {
 
+=======
+    QString str = ui->plainTextEdit->toPlainText();
+    long str2 = str.toLong(&ok, 10); //If ok is not nullptr, failure is reported by setting *ok to false, and success by setting *ok to true.
+>>>>>>> f684fc536e73c70b650a609dbc5988e3134099b2
     QString strOCT = QString::number(str2, 8);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -197,7 +212,7 @@ void Konwerter::on_NWWButton_clicked()
     else {
 
     long NWDstr = NWD(str3,str4);
-    long NWWstr = str3*str4/NWDstr;
+    long NWWstr = str3*str4/NWDstr; //wykorzystanie zależności NWW=a*b/NWD
     out << "Najmniejsza wspólna wielokrotność: ";
     out << NWWstr;
     out << "\n\n";
