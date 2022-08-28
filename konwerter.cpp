@@ -1,4 +1,3 @@
-//pliki nagłówkowe
 #include "konwerter.h"
 #include "ui_konwerter.h"
 
@@ -19,9 +18,7 @@ Konwerter::Konwerter(QWidget *parent)
     ui->lineEdit_3->setValidator(new QIntValidator(0, 1000000000, this));
 
     this->setWindowTitle("Konwerter Systemów Liczbowych");
-
 }
-
 
 Konwerter::~Konwerter()
 {
@@ -29,7 +26,6 @@ Konwerter::~Konwerter()
 }
 
 // Zastosowanie algorytmu Euklidesa do wyznaczania największego wspólnego dzielnika
-
 int NWD(long a, long b) {
     while(a!=b)
            if(a>b)
@@ -38,7 +34,6 @@ int NWD(long a, long b) {
                b-=a;
         return a;
 }
-
 
 void Konwerter::on_BINButton_clicked()
 {
@@ -51,18 +46,14 @@ void Konwerter::on_BINButton_clicked()
 
     bool ok;
     QTextStream out(&file);
-<<<<<<< HEAD
     QString str = ui->lineEdit->text();
     long str2 = str.toLong(&ok, 10);
 
     if (str2 == 0) {
          ui->label->setText(QString("0 < Twoja liczba < 2147483648."));
     }
-    else {
-=======
-    QString str = ui->plainTextEdit->toPlainText(); //pobierz dane z plainTextEdit
-    long str2 = str.toLong(&ok, 10); //zamiana na zmienną podwójnej prezycji
->>>>>>> f684fc536e73c70b650a609dbc5988e3134099b2
+    else
+    {
     QString strBIN = QString::number(str2, 2);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -73,9 +64,8 @@ void Konwerter::on_BINButton_clicked()
     ui->label->setText(QString("Liczba zapisana w systemie dwójkowym: %1 ").arg(strBIN));
     file.flush();
     file.close();
+    }
 }
-}
-
 
 
 void Konwerter::on_OCTButton_clicked()
@@ -89,7 +79,6 @@ void Konwerter::on_OCTButton_clicked()
 
     bool ok;
     QTextStream out(&file);
-<<<<<<< HEAD
     QString str = ui->lineEdit->text();
     long str2 = str.toLong(&ok, 10);
 
@@ -98,10 +87,6 @@ void Konwerter::on_OCTButton_clicked()
     }
     else {
 
-=======
-    QString str = ui->plainTextEdit->toPlainText();
-    long str2 = str.toLong(&ok, 10); //If ok is not nullptr, failure is reported by setting *ok to false, and success by setting *ok to true.
->>>>>>> f684fc536e73c70b650a609dbc5988e3134099b2
     QString strOCT = QString::number(str2, 8);
     out << "Liczba podana dziesiętnie: ";
     out << str;
@@ -221,7 +206,6 @@ void Konwerter::on_NWWButton_clicked()
     file.close();
 }
     }
-
 
 
 void Konwerter::on_pushButton_clicked()
